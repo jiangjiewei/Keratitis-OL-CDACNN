@@ -24,14 +24,17 @@ The training and testing are executed as follows:
 
 ## Train a new Faster-rcnn model
 python tools/train.py configs/coco/faster_rcnn_r50_fpn_2x_coco.py
+
 python tools/train.py configs/coco/faster_rcnn_r101_fpn_2x_coco.py
 
 ## Train a new Cascade-rcnn model
 python tools/train.py configs/coco/cascade_rcnn_r50_fpn_2x_coco.py
+
 python tools/train.py configs/coco/cascade_rcnn_r101_fpn_2x_coco.py
 
 ## Train a new Retinanet model
 python tools/train.py configs/coco/retinanet_r50_fpn_2x_coco.py
+
 python tools/train.py configs/coco/retinanet_r101_fpn_2x_coco.py
 
 ## Train a new Tridentnet model
@@ -42,14 +45,17 @@ python tools/train.py configs/coco/ssd512_2x_coco.py
 
 ## Test and inference of Faster-rcnn
 python tools/test.py configs/coco/faster_rcnn_r50_fpn_2x_coco.py work_dirs/faster_rcnn_r50_fpn_2x_coco/latest.pth --eval mAP
+
 python tools/test.py configs/coco/faster_rcnn_r101_fpn_2x_coco.py work_dirs/faster_rcnn_r101_fpn_2x_coco/latest.pth --eval mAP
 
 ## Test and inference of Cascade-rcnn
 python tools/test.py configs/coco/cascade_rcnn_r50_fpn_2x_coco.py work_dirs/cascade_rcnn_r50_fpn_2x_coco/latest.pth --eval mAP
+
 python tools/test.py configs/coco/cascade_rcnn_r101_fpn_2x_coco.py work_dirs/cascade_rcnn_r101_fpn_2x_coco/latest.pth --eval mAP
 
 ## Test and inference of Retinanet
 python tools/test.py configs/coco/retinanet_r50_fpn_2x_coco.py work_dirs/retinanet_r50_fpn_2x_coco/latest.pth --eval mAP
+
 python tools/test.py configs/coco/retinanet_r101_fpn_2x_coco.py work_dirs/retinanet_r101_fpn_2x_coco/latest.pth --eval mAP
 
 ## Test and inference of Tridentnet
