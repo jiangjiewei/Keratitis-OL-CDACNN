@@ -27,6 +27,10 @@ python tools/train.py configs/coco/faster_rcnn_r50_fpn_2x_coco.py
 python tools/train.py configs/coco/faster_rcnn_r101_fpn_2x_coco.py
 python tools/train.py configs/coco/cascade_rcnn_r50_fpn_2x_coco.py
 python tools/train.py configs/coco/cascade_rcnn_r101_fpn_2x_coco.py
+python tools/train.py configs/coco/retinanet_r50_fpn_2x_coco.py
+python tools/train.py configs/coco/retinanet_r101_fpn_2x_coco.py
+python tools/train.py configs/coco/tridentnet_r50_2x_coco.py
+python tools/train.py configs/coco/ssd512_2x_coco.py
 
 ## Test and inference
 python tools/test.py configs/coco/faster_rcnn_r50_fpn_2x_coco.py work_dirs/faster_rcnn_r50_fpn_2x_coco/latest.pth --eval mAP
