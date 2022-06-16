@@ -59,4 +59,4 @@ python tools/test.py configs/coco/tridentnet_r50_2x_coco.py work_dirs/tridentnet
 python tools/test.py configs/coco/ssd512_2x_coco.py work_dirs/ssd512_2x_coco/latest.pth --eval mAP
 ***
 
-**Please feel free to contact us for any questions or comments: Jiewei Jiang, E-mail: jiangjw924@126.com or Zhongwen Li, E-mail: li.zhw@qq.com.**
+**Please feel free to contact us for any questions or comments: Jiewei Jiang, E-mail: jiangjw924@126.com or Wei liu, E-mail: liuw_5@qq.com.**
