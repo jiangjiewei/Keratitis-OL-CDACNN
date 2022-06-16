@@ -25,13 +25,13 @@ Other packages are as follows:
 # Install dependencies
 pip install -r requirements.txt
 # Usage
-* The file "keratitis_training_v1.py" in /Keratitis-Source is used for our models training.
-* The file "keratitis_testing_v1.py" in /Keratitis-Source is used for testing.
+* The file "train.py" is used for our models training.
+* The file "test.py"  is used for testing.
 
 The training and testing are executed as follows:
 
-## Train DenseNet121 on GPU
-python keratitis_training_v1.py -a 'densenet121'
+## Train CDAN with conjunctival and corneal dataset on GPU
+python train.py --data 'conj-c' --attention False
 
 ## Train ResNet50 on GPU
 python keratitis_training_v1.py -a 'resnet50'
