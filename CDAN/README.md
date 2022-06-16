@@ -67,9 +67,10 @@ python test.py --data 'ori' --attention
 python test.py --data 'ori'
 ***
 
-The representative samples for keratitis, other cornea abnormalities, and normal cornea are presented in /Keratitis-Source/sample.  
-The representative samples of slit-lamp images: Keratitis-Source/sample/Representative samples of slit-lamp images/  
-The representative samples of smartphone images: Keratitis-Source/sample/Representative samples of smartphone images/  
+The representative samples for keratitis, other cornea abnormalities, and normal cornea are presented in /Keratitis-OL-CDAN/sample.  
+The representative samples of original slit-lamp images: Keratitis-OL-CDAN/sample/Representative samples of original slit-lamp images/  
+The representative samples of the conjunctival and corneal region images: Keratitis-OL-CDAN/sample/Representative samples of the conjunctival and corneal region images/ 
+The representative samples of  the corneal region images: Keratitis-OL-CDAN/sample/Representative samples of the corneal region images/
 The expected output: print the classification probabilities for keratitis, other cornea abnormalities, and normal cornea.
 
 **Please feel free to contact us for any questions or comments: Jiewei Jiang, E-mail: jiangjw924@126.com or Wei liu, E-mail: liuw_5@qq.com.**
