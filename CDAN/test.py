@@ -1,0 +1,81 @@
+import os
+import math
+import argparse
+
+import torch
+import torch.optim as optim
+from torchvision import transforms
+
+from model_DA import densenet121_DA, load_state_dict
+from model import densenet121
+from cost_sensitive import  train_one_epoch, evaluate
+
+from torchvision import transforms, datasets
+import json
+
+def main(args):
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+    print("using {} device.".format(device))
+    if args.data == "conj-c":
+        mean = [0.5841176, 0.35896605, 0.2481438]
+        std = [0.20916606, 0.18940377, 0.17913769]
+    elif args.data =="c":
+        mean = [0.55412745, 0.34579736, 0.23483945]
+        std = [0.19785675, 0.17708106, 0.17046732]
+    else:
+        mean = [0.5765036, 0.34929818, 0.2401832]
+        std = [0.2179051, 0.19200659, 0.17808074]
+    data_transform = {
+
+        "test": transforms.Compose([transforms.Resize([224,224]),
+                                    transforms.ToTensor(),
+                                    transforms.Normalize(mean,std)])}
+
+    data_root = os.path.abspath("../data")  # get data root path
+    if args.data == 'conj-c':
+        image_path = os.path.join(data_root, "conjunctival-corneal")
+    elif args.data == 'c':
+        image_path = os.path.join(data_root, "corneal")
+    else:
+        image_path = os.path.join(data_root, "original")
+    assert os.path.exists(image_path), "{} path does not exist.".format(image_path)
+    testdate_dataset = datasets.ImageFolder(root=os.path.join(image_path, "test"),
+                                            transform=data_transform["test"])
+
+    classes_list = train_dataset.class_to_idx
+    cla_dict = dict((val, key) for key, val in classes_list.items())
+    json_str = json.dumps(cla_dict, indent=4)
+    with open('class_indices.json', 'w') as json_file:
+        json_file.write(json_str)
+    batch_size = args.batch_size
+    nw = min([os.cpu_count(), batch_size if batch_size > 1 else 0, 8])  # number of workers
+    print('Using {} dataloader workers every process'.format(nw))
+    test_num = len(testdate_dataset)
+    testdate_loader = torch.utils.data.DataLoader(testdate_dataset,
+                                                  batch_size=batch_size, shuffle=False,
+                                                  num_workers=nw)
+    print("using {} images for test.".format(test_num))
+
+    if args.attention:
+        model = densenet121_DA(num_classes=args.num_classes).to(device)
+    else:
+        model = densenet121(num_classes=args.num_classes).to(device)
+    if os.path.exists(args.weights):
+        load_state_dict(model, args.weights)
+    print(model)
+    model_weight_path = "./weights/best_model.pth"
+    model.load_state_dict(torch.load(model_weight_path, map_location=device))
+    acc = evaluate(model=model,
+                    data_loader=testdate_loader,
+                    device=device)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_classes', type=int, default=3)
+    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--device', default='cuda:2', help='device id (i.e. 0 or 0,1 or cpu)')
+    parser.add_argument('--attention', type=bool, default=True)
+    parser.add_argument('--data', type=str, default='conj-c')
+
+    opt = parser.parse_args()
+
+    main(opt)
