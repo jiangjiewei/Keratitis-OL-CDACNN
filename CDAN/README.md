@@ -31,16 +31,40 @@ pip install -r requirements.txt
 The training and testing are executed as follows:
 
 ## Train CDAN with conjunctival and corneal dataset on GPU
-python train.py --data 'conj-c' --attention False
+python train.py --data 'conj-c' --attention 
 
-## Train ResNet50 on GPU
-python keratitis_training_v1.py -a 'resnet50'
+## Train DenseNet with conjunctival and corneal dataset on GPU
+python train.py --data 'conj-c' 
 
-## Train Inception-v3 on GPU
-python keratitis_training_v1.py -a 'inception_v3'
+## Train CDAN with corneal dataset on GPU
+python train.py --data 'c' --attention 
 
-## Evaluate three models of DenseNet121, ResNet50, and Inception-v3 at the same time on GPU
-python keratitis_testing_v1.py
+## Train DenseNet with corneal dataset on GPU
+python train.py --data 'c'
+
+## Train CDAN with original dataset on GPU
+python train.py --data 'ori' --attention 
+
+## Train DenseNet with original dataset on GPU
+python train.py --data 'ori'
+
+## Evaluate CDAN with conjunctival and corneal dataset on GPU
+python test.py --data 'conj-c' --attention
+
+## Evaluate DenseNet with conjunctival and corneal dataset on GPU
+python test.py --data 'conj-c' 
+
+## Evaluate CDAN with corneal dataset on GPU
+python test.py --data 'c' --attention
+
+## Evaluate DenseNet with corneal dataset on GPU
+python test.py --data 'c' 
+
+## Evaluate CDAN with original dataset on GPU
+python test.py --data 'ori' --attention
+
+## Evaluate DenseNet with original dataset on GPU
+python test.py --data 'ori'
 ***
 
 The representative samples for keratitis, other cornea abnormalities, and normal cornea are presented in /Keratitis-Source/sample.  
@@ -48,4 +72,4 @@ The representative samples of slit-lamp images: Keratitis-Source/sample/Represen
 The representative samples of smartphone images: Keratitis-Source/sample/Representative samples of smartphone images/  
 The expected output: print the classification probabilities for keratitis, other cornea abnormalities, and normal cornea.
 
-**Please feel free to contact us for any questions or comments: Zhongwen Li, E-mail: li.zhw@qq.com or Jiewei Jiang, E-mail: jiangjw924@126.com.**
+**Please feel free to contact us for any questions or comments: Jiewei Jiang, E-mail: jiangjw924@126.com or Wei liu, E-mail: liuw_5@qq.com.**
