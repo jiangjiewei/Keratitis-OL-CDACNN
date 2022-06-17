@@ -24,6 +24,6 @@ Other packages are as follows:
 pip install -r requirements.txt
 # Usage
 * The file "object-localization" in /Keratitis-OL-CDAN is used for automatic localization for the corneal region and the conjunctival and corneal region.
-* The file "CDAN" in /Keratitis-CDAN is used for automatic diagnosis of keratitis.
+* The file "CDAN" in /Keratitis-OL-CDAN is used for automatic diagnosis of keratitis.
 
 **Please feel free to contact us for any questions or comments: Jiewei Jiang, E-mail: jiangjw924@126.com or Wei liu, E-mail: liuw_5@qq.com.**
